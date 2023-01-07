@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 const Word = (props) => {
 
 		const [ word, setWord ] = useState([]);
+        // const [newForm, setNewForm] = useState({
+        //     name: "",
+        // });
         const BASE_URL = "https://bce-trending.herokuapp.com/word";
         const getWord= async ()=>{
             try{
