@@ -9,8 +9,8 @@ const Main = (props) => {
         <main>
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/word" element={<Word/>}/>
-                <Route path="/book" element={<Book/>}/>
+                <Route path="/word/:id" element={<Word/>}/>
+                <Route path="/book/:id" element={<Book/>}/>
                 <Route path="/fashion" element={<Fashion/>}/>
             </Routes>
         </main>
