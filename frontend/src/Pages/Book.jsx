@@ -16,6 +16,39 @@ const Book = (props) => {
             }
         }
 
+        const handleChange = (e) =>{
+          const userInput = {...newBook}
+          userInput[e.target.title] = e.target.value
+          setNewBook(userInput)
+        }
+
+        const handleSubmit = async (e) =>{
+          e.preventDefault()
+          const currentState = {...newBook}
+          try{
+            const requestOptions ={
+              method: "POST",
+              headers:{
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(currentState)
+            }
+            const response = await fetch(BASE_URL, requestOptions)
+            // 4. check our response - 
+            // 5. parse the data from the response into JS (from JSON) 
+            const createdBook= await response.json()
+            console.log(createdBook)
+            // update local state with response (json from be)
+            setBook([...book, createdBook])
+            // reset newForm state so that our form empties out
+            setNewBook({
+                title: "",
+            })
+          }catch(err){
+            console.log(err)
+          }
+        }
+
         const loaded = () => {
             return book?.map((book) => {
               return (
@@ -46,7 +79,33 @@ const Book = (props) => {
         useEffect(()=>{getBook()},[])
         console.log(`there is ${book.length} books available to render`)
         return (
-            <section className="book-list">{book && book.length ? loaded() : loading()}</section>
+          <div> 
+            <section>
+              <h2>New Book</h2>
+              <form onSubmit = {handleSubmit}>
+                <div>
+                  <label htmlFor= "book">
+                    Book
+                    <input
+                      type="text"
+                      id="book"
+                      name="book"
+                      placeholder="Enter A Book"
+                      value={newBook.book}
+                      onChange={handleChange}
+                    />
+
+                  </label>
+                </div>
+                <br />
+                <input
+                  type="submit"
+                  value = "Creat a new book"/>
+
+              </form>
+            </section>
+            {book && book.length ? loaded() : loading()}
+          </div>
           );
 }
 
