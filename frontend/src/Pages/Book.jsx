@@ -4,7 +4,7 @@ const Book = (props) => {
 		const [ book, setBook ] = useState([]);
     const [newBook, setNewBook] = useState({
       title:"",
-    })
+    });
         const BASE_URL = "https://bce-trending.herokuapp.com/book";
         const getBook= async ()=>{
             try{
@@ -79,8 +79,7 @@ const Book = (props) => {
         useEffect(()=>{getBook()},[])
         console.log(`there is ${book.length} books available to render`)
         return (
-          <div> 
-            <section>
+            <section className="book-list">{book && book.length ? loaded() : loading()}
               <h2>New Book</h2>
               <form onSubmit = {handleSubmit}>
                 <div>
@@ -88,10 +87,10 @@ const Book = (props) => {
                     Book
                     <input
                       type="text"
-                      id="book"
-                      name="book"
+                      id="name"
+                      title="title"
                       placeholder="Enter A Book"
-                      value={newBook.book}
+                      value={newBook.title}
                       onChange={handleChange}
                     />
 
@@ -100,12 +99,10 @@ const Book = (props) => {
                 <br />
                 <input
                   type="submit"
-                  value = "Creat a new book"/>
+                  value= "Create a new book"/>
 
               </form>
             </section>
-            {book && book.length ? loaded() : loading()}
-          </div>
           );
 }
 
