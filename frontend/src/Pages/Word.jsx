@@ -4,7 +4,9 @@ const Word = (props) => {
 
 		const [ word, setWord ] = useState([]);
         const [newWord, setNewWord] = useState({
-            name: "",
+          name: "",
+          description: "",
+          link: "",
         });
         const BASE_URL = "https://bce-trending.herokuapp.com/word";
         const getWord= async ()=>{
@@ -51,7 +53,9 @@ const Word = (props) => {
             setWord([...word, createdWord])
             // reset newForm state so that our form empties out
             setNewWord({
-                name: "",
+              name: "",
+              description: "",
+              link: "",
             })
 
         } catch (err) {
@@ -63,8 +67,8 @@ const Word = (props) => {
               return (
                 <div key={word._id}>
                   <h1>{word.name}</h1>
-                  {/* <img src={Word.image} />
-                  <h3>{word.title}</h3> */}
+                  <h3>{word.description}</h3>
+                  <h3>{word.link}</h3>
                 </div>
               );
             });
@@ -88,7 +92,7 @@ const Word = (props) => {
         useEffect(()=>{getWord()},[])
         console.log(`this is word ${word.length}, but I'm nineteen and don't know how to read`)
         return (
-            <section className="word-list">{word && word.length ? loaded() : loading()}
+            <section className="word-list">
               <h2>New word </h2>
               <form onSubmit={handleSubmit}>
                     <div>
@@ -104,35 +108,36 @@ const Word = (props) => {
                             />
                         </label>
                     </div>
-                    {/* <div>
-                        <label htmlFor='image'>
-                            Image
-                            <input
-                                type="text"
-                                id="image"
-                                name="image"
-                                placeholder="enter a person's image"
-                                value={newWord.image}
-                                onChange={handleChange}
-                            />
-                        </label>
-                    </div>
                     <div>
-                        <label htmlFor='title'>
-                            Title
-                            <input
-                                type="text"
-                                id="title"
-                                name="title"
-                                placeholder="enter a Word"
-                                value={newWord.title}
-                                onChange={handleChange}
-                            /> */}
-                        {/* </label> */}
+                    <label htmlFor='description'>
+                        Description
+                        <input 
+                            type="text" 
+                            id="description"
+                            name="description" 
+                            placeholder="enter the word trend description" 
+                            value={newWord.description}
+                            onChange={handleChange}
+                        />
+                    </label>
+                  </div>
+                  <div>
+                    <label htmlFor='link'>
+                        Link
+                        <input 
+                            type="text" 
+                            id="link"
+                            name="link" 
+                            placeholder="enter the word trend link" 
+                            value={newWord.link}
+                            onChange={handleChange}
+                        />
+                    </label>
+                    </div>
                         <br />
                         <input type="submit" value="Create a new Word" />
-                    {/* </div> */}
                 </form>
+                {word && word.length ? loaded() : loading()}
             </section>
           );
 }

@@ -4,7 +4,10 @@ const Fashion = (props) => {
 
 		const [ fashion, setFashion ] = useState([]);
       const [ newFashion, setNewFashion ] = useState ({
+        image: "",
         name: "",
+        description: "",
+        link: "",
       });
         const BASE_URL = "https://bce-trending.herokuapp.com/fashion";
         const getFashion= async ()=>{
@@ -39,7 +42,10 @@ const Fashion = (props) => {
             console.log(createdFashion)
             setFashion([...fashion, createdFashion])
             setNewFashion({
-              name:"",
+              image: "",
+              name: "",
+              description: "",
+              link: "",
             })
 
           } catch (err) {
@@ -51,9 +57,10 @@ const Fashion = (props) => {
             return fashion?.map((fashion) => {
               return (
                 <div key={fashion._id}>
+                  <img src={fashion.image} alt={fashion.name}  height={200} width={200}/>
                   <h1>{fashion.name}</h1>
-                  {/* <img src={Word.image} />
-                  <h3>{word.title}</h3> */}
+                  <h3>{fashion.description}</h3>
+                  <h3>{fashion.link}</h3>
                 </div>
               );
             });
@@ -76,12 +83,25 @@ const Fashion = (props) => {
         useEffect(()=>{getFashion()},[])
         console.log(`there is ${fashion.length} fashion available to render`)
         return (
-            <section className="fashion-list">{fashion && fashion.length ? loaded() : loading()}
+            <section className="fashion-list">
             <h2>New Fashion</h2>
             <form onSubmit={handleSubmit}>
                 <div>
+                  <label htmlFor='image'>
+                      Image
+                      <input 
+                          type="text" 
+                          id="image"
+                          name="image" 
+                          placeholder="enter the fashion trend image" 
+                          value={newFashion.image}
+                          onChange={handleChange}
+                      />
+                  </label>
+                </div>
+                <div>
                   <label htmlFor='name'>
-                    Fashion
+                    Name
                     <input
                       type="text"
                       id="name"
@@ -92,9 +112,36 @@ const Fashion = (props) => {
                     />
                   </label>
                 </div>
+                <div>
+                    <label htmlFor='description'>
+                        Description
+                        <input 
+                            type="text" 
+                            id="description"
+                            name="description" 
+                            placeholder="enter the fashion trend description" 
+                            value={newFashion.description}
+                            onChange={handleChange}
+                        />
+                    </label>
+                  </div>
+                  <div>
+                    <label htmlFor='link'>
+                        Link
+                        <input 
+                            type="text" 
+                            id="link"
+                            name="link" 
+                            placeholder="enter the fashion trends link" 
+                            value={newFashion.link}
+                            onChange={handleChange}
+                        />
+                    </label>
+                    </div>
                 <br />
                 <input type="submit" value="Create a new Word" />
             </form>
+            {fashion && fashion.length ? loaded() : loading()}
             </section>
           );
 }
