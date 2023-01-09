@@ -3,7 +3,7 @@ import Home from "../Pages/Home"
 import WordShow from "../Pages/Wordshow"
 import Word from "../Pages/Word";
 import Book from "../Pages/Book";
-
+import BookShow from "../Pages/BookShow"
 import Fashion from "../Pages/Fashion";
 import FashionShow from "../Pages/Fashionshow"
 
@@ -15,7 +15,7 @@ const Main = (props) => {
                 <Route path="/word" element={<Word/>}/>
                 <Route path="/word/:id" element={<WordShow />}/>
                 <Route path="/book" element={<Book/>}/>
-
+                <Route path="/book/:id" element={<BookShow />}/>
                 <Route path="/fashion" element={<Fashion/>}/>
                 <Route path="/fashion/:id" element={<FashionShow />}/>
                 </Routes>

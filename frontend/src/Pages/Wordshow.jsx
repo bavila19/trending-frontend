@@ -2,7 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 function WordShow(props) {
-    const [Word, setWord] = useState(null)
+    const [word, setWord] = useState(null)
     const [editForm, setEditForm] = useState("")
     
 		const navigate = useNavigate()
@@ -16,15 +16,18 @@ function WordShow(props) {
 
     const updateWord = async (e) => {
         e.preventDefault()
+        console.log(editForm)
         try {
             const options = {
                 method: "PUT",
-                headers: {"content-type": "applications/json" },
+                headers: {"content-type": "application/json" },
                 body: JSON.stringify(editForm)
 
             }
             const response = await fetch(URL, options)
+            console.log(response)
             const updatedWord = await response.json()
+            console.log(updatedWord)
 
                 setWord(updatedWord)
                 setEditForm(updatedWord)
@@ -41,7 +44,7 @@ function WordShow(props) {
         const foundWord = await response.json()
 
         setWord(foundWord)
-            setEditForm(foundWord)
+        setEditForm(foundWord)
         
         } catch (err) {
             console.log(err)
@@ -73,7 +76,7 @@ function WordShow(props) {
         <section>
             <div className="Word">
                 <h1>Word Show Page</h1>
-                <h2>{Word.name}</h2>
+                <h2>{word.name}</h2>
                 <div>
                     <button className="delete" onClick={removeWord}>Remove Word</button>
                 </div>
@@ -102,7 +105,7 @@ function WordShow(props) {
         </>
     );
     return (
-        <div>{Word ? loaded() : loading()}</div>
+        <div>{word ? loaded() : loading()}</div>
     )
 }    
 

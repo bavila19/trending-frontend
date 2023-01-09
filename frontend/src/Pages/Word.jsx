@@ -93,7 +93,7 @@ const Word = (props) => {
               <form onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor='name'>
-                            Name
+                            Word
                             <input
                                 type="text"
                                 id="name"
