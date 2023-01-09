@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 
 const Book = (props) => {
-
 		const [ book, setBook ] = useState([]);
+    const [newBook, setNewBook] = useState({
+      title:"",
+    })
         const BASE_URL = "https://bce-trending.herokuapp.com/book";
         const getBook= async ()=>{
             try{
