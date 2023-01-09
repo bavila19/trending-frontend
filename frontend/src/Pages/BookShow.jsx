@@ -9,7 +9,7 @@ function BookShow(props) {
     const { id } = params
     const URL = `https://bce-trending.herokuapp.com/book/${id}`
 
-    const handleChange = (e) => setEditForm ({ ...editForm, [e.target.title]: e.target.value})
+    const handleChange = (e) => setEditForm ({ ...editForm, [e.target.name]: e.target.value})
 
     const updateBook = async (e) => {
         e.preventDefault()
@@ -76,7 +76,7 @@ function BookShow(props) {
                 <input
                     type="text"
                     value={editForm.title}
-                    title="tile"
+                    name= "title"
                     placeholder="title"
                     onChange={handleChange}
                 />
