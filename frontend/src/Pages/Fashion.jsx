@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom'
 
 const Fashion = (props) => {
 
@@ -56,13 +57,13 @@ const Fashion = (props) => {
               <section className="trendf-list">
                   {fashion?.map((trendf) => {
                       return (
-                          <div key={trendf._id} to={`/fashion/${trendf._id}`}>
+                          <Link key={trendf._id} to={`/fashion/${trendf._id}`}>
                           <div className='fashion-card'>
                               <h1>{trendf.name}</h1>
                               <img src={trendf.image} alt={trendf.name}  height={200} width={200}/>
                               <h3>{trendf.description}</h3>
                           </div>
-                          </div>
+                          </Link>
                       )
                   })
                   }

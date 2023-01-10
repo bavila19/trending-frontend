@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom'
 
 const Book = (props) => {
 		const [ book, setBook ] = useState([]);
@@ -63,7 +64,7 @@ const Book = (props) => {
             <section className="trendb-list">
                 {book?.map((trendb) => {
                     return (
-                        <div key={trendb._id} to={`/book/${trendb._id}`}>
+                        <Link key={trendb._id} to={`/book/${trendb._id}`}>
                         <div className='trendb-card'>
                             {/* React optimization / difference */}
                             <img src={trendb.image} alt={trendb.name}  height={200} width={200}/>
@@ -72,7 +73,7 @@ const Book = (props) => {
                             <h3>{trendb.description}</h3>
                             {/* <h3>{trend.link}</h3> */}
                         </div>
-                        </div>
+                        </Link>
                     )
                 })
                 }

@@ -2,7 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 function BookShow(props) {
-    const [book, setBook] = useState(null)
+    const [trendb, setTrendb] = useState(null)
     const [editForm, setEditForm] = useState("")
         const navigate = useNavigate()
     const params = useParams()
@@ -11,7 +11,7 @@ function BookShow(props) {
 
     const handleChange = (e) => setEditForm ({ ...editForm, [e.target.name]: e.target.value})
 
-    const updateBook = async (e) => {
+    const updateTrendb = async (e) => {
         e.preventDefault()
         try {
             const options = {
@@ -20,35 +20,35 @@ function BookShow(props) {
                 body: JSON.stringify(editForm)
             }
             const response = await fetch(URL, options)
-            const updatedBook = await response.json()
+            const updatedTrendb = await response.json()
 
-            setBook(updatedBook)
-            setEditForm(updatedBook)
+            setTrendb(updatedTrendb)
+            setEditForm(updatedTrendb)
         } catch (err) {
             console.log(err)
             navigate(URL)
         }
     }
 
-    const getBook = async () => {
+    const getTrendb = async () => {
         try {
             const response = await fetch(URL)
-            const foundBook = await response.json()
+            const foundTrendb = await response.json()
 
-            setBook(foundBook)
-            setEditForm(foundBook)
+            setTrendb(foundTrendb)
+            setEditForm(foundTrendb)
         } catch (err) {
             console.log(err)
         }
     }
 
-    const removeBook = async () => {
+    const removeTrendb = async () => {
         try {
             const options = {
                 method: "DELETE"
             }
             const response = await fetch(URL, options)
-            const deletedBook = await response.json()
+            const deletedTrendb = await response.json()
             navigate('/')
         } catch (err) {
             console.log(err)
@@ -56,7 +56,7 @@ function BookShow(props) {
         }
     }
     useEffect(() => {
-        getBook()
+        getTrendb()
     }, [])
 
     const loaded = () => (
@@ -64,19 +64,19 @@ function BookShow(props) {
         <section>
             <div className="book">
                 <h1>Book Show Page</h1>
-                <img src={book.image} alt={book.name + " image"} />
-                <h2>{book.name}</h2>
-                <h3>{book.author}</h3>
-                <h3>{book.description}</h3>
+                <img src={trendb.image} alt={trendb.name + " image"} />
+                <h2>{trendb.name}</h2>
+                <h3>{trendb.author}</h3>
+                <h3>{trendb.description}</h3>
                 {/* <img src={book.image} alt={book.name + " image"} /> */}
                 <div>
-                    <button className="delete" onClick={removeBook}>Remove book</button>
+                    <button className="delete" onClick={removeTrendb}>Remove book</button>
                 </div>
             </div>
         </section>
-        <section>
+        {/* <section>
             <h2>Edit this Book Trend</h2>
-            <form onSubmit={updateBook}>
+            <form onSubmit={updateTrendb}>
             <input
                         type="text"
                         value={editForm.image}
@@ -107,9 +107,9 @@ function BookShow(props) {
                     />
                 <input type="submit" value="Update Book" />
             </form>
-        </section>
+        </section>*/}
         </>
-    )
+    ) 
     const loading = () => (
         <>
             <h1>
@@ -118,7 +118,7 @@ function BookShow(props) {
         </>
     );
     return (
-        <div>{book ? loaded() : loading()}</div>
+        <div>{trendb ? loaded() : loading()}</div>
     )
 }
 
