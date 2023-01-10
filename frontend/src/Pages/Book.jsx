@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
+
 
 const Book = (props) => {
 		const [ book, setBook ] = useState([]);
@@ -22,7 +24,9 @@ const Book = (props) => {
 
         const handleChange = (e) =>{
           const userInput = {...newBook}
-          userInput[e.target.title] = e.target.value
+          userInput[e.target.name] = e.target.value
+          console.log(userInput)
+          console.log(newBook.title)
           setNewBook(userInput)
         }
 
@@ -60,13 +64,16 @@ const Book = (props) => {
         const loaded = () => {
             return book?.map((book) => {
               return (
-                <div key={book._id}>
+                <Link key={book.id} to={`/book/${book._id}`}>
+                <div className='book'>
                   <img src={book.image} alt={book.name}  height={200} width={200}/>
                   <h1>{book.title}</h1>
                   <h1>{book.author}</h1>
                   <h3>{book.description}</h3>
                   <h3>{book.link}</h3>
+                  
                 </div>
+                </Link>
               );
             });
           };
@@ -106,11 +113,11 @@ const Book = (props) => {
                   </label>
                 </div>
                 <div>
-                  <label htmlFor= "bookTitle">
+                  <label htmlFor= "title">
                     Book
                     <input
                       type="text"
-                      id="name"
+                      id="title"
                       title="title"
                       placeholder="Enter A Book"
                       value={newBook.title}
