@@ -64,7 +64,11 @@ function BookShow(props) {
         <section>
             <div className="book">
                 <h1>Book Show Page</h1>
+                <img src={book.image} alt={book.name + " image"} />
                 <h2>{book.title}</h2>
+                <h2>{book.author}</h2>
+                <h3>{book.description}</h3>
+                <h2>{book.link}</h2>
                 <div>
                     <button className="delete" onClick={removeBook}>Remove book</button>
                 </div>
@@ -75,11 +79,39 @@ function BookShow(props) {
             <form onSubmit={updateBook}>
                 <input
                     type="text"
-                    value={editForm.title}
-                    name= "title"
-                    placeholder="title"
+                    value={editForm.image}
+                    name= "image"
+                    placeholder="image URL"
                     onChange={handleChange}
                 />
+                <input
+                        type="text"
+                        value={editForm.title}
+                        name="title"
+                        placeholder="title"
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="text"
+                        value={editForm.author}
+                        name="author"
+                        placeholder="author"
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="text"
+                        value={editForm.description}
+                        name="description"
+                        placeholder="description"
+                        onChange={handleChange}
+                    />
+                     <input
+                        type="link"
+                        value={editForm.link}
+                        name="link"
+                        placeholder="link"
+                        onChange={handleChange}
+                    />
                 <input type="submit" value="Update Book" />
             </form>
         </section>
