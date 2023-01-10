@@ -4,12 +4,11 @@ const Fashion = (props) => {
 
 		const [ fashion, setFashion ] = useState([]);
       const [ newFashion, setNewFashion ] = useState ({
-        image: "",
         name: "",
+        image: "",
         description: "",
-        link: "",
       });
-        const BASE_URL = "https://bce-trending.herokuapp.com/fashion";
+        const BASE_URL = "http://localhost:4000/fashion";
         const getFashion= async ()=>{
             try{
                 const response = await fetch(BASE_URL)
@@ -38,14 +37,13 @@ const Fashion = (props) => {
               body: JSON.stringify(currentState)             
             }
             const response = await fetch(BASE_URL, requestOptions)
-            const createdFashion = await response.json()
-            console.log(createdFashion)
-            setFashion([...fashion, createdFashion])
+            const createdTrend = await response.json()
+            console.log(createdTrend)
+            setFashion([...fashion, createdTrend])
             setNewFashion({
-              image: "",
               name: "",
+              image: "",
               description: "",
-              link: "",
             })
 
           } catch (err) {
@@ -53,18 +51,40 @@ const Fashion = (props) => {
           }
       }
 
+        // const loaded = () => {
+        //     return fashion?.map((fashion) => {
+        //       return (
+        //         <div key={fashion._id}>
+        //           <img src={fashion.image} alt={fashion.name}  height={200} width={200}/>
+        //           <h1>{fashion.name}</h1>
+        //           <h3>{fashion.description}</h3>
+        //           <h3>{fashion.link}</h3>
+        //         </div>
+        //       );
+        //     });
+        //   };
+
         const loaded = () => {
-            return fashion?.map((fashion) => {
-              return (
-                <div key={fashion._id}>
-                  <img src={fashion.image} alt={fashion.name}  height={200} width={200}/>
-                  <h1>{fashion.name}</h1>
-                  <h3>{fashion.description}</h3>
-                  <h3>{fashion.link}</h3>
-                </div>
-              );
-            });
-          };
+          return (<>
+              
+              <section className="trend-list">
+                  {fashion?.map((trend) => {
+                      return (
+                          <div key={trend._id} to={`/fashion/${trend._id}`}>
+                          <div className='fashion-card'>
+                              {/* React optimization / difference */}
+                              <h1>{trend.name}</h1>
+                              <img src={trend.image} alt={trend.name}  height={200} width={200}/>
+                              <h3>{trend.description}</h3>
+                          </div>
+                          </div>
+                      )
+                  })
+                  }
+              </section>
+          </>
+          )
+      }
         
           const loading = () => (
             <section className="fashion-list">
@@ -87,57 +107,45 @@ const Fashion = (props) => {
             <h2>New Fashion</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                  <label htmlFor='image'>
-                      Image
-                      <input 
-                          type="text" 
-                          id="image"
-                          name="image" 
-                          placeholder="enter the fashion trend image" 
-                          value={newFashion.image}
-                          onChange={handleChange}
-                      />
-                  </label>
-                </div>
-                <div>
-                  <label htmlFor='name'>
-                    Name
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      placeholder="enter a fashion"
-                      value={newFashion.name}
-                      onChange={handleChange}
-                    />
-                  </label>
-                </div>
-                <div>
-                    <label htmlFor='description'>
-                        Description
+                <label htmlFor='name'>
+                        Name
                         <input 
                             type="text" 
-                            id="description"
-                            name="description" 
-                            placeholder="enter the fashion trend description" 
-                            value={newFashion.description}
-                            onChange={handleChange}
-                        />
-                    </label>
-                  </div>
-                  <div>
-                    <label htmlFor='link'>
-                        Link
-                        <input 
-                            type="text" 
-                            id="link"
-                            name="link" 
-                            placeholder="enter the fashion trends link" 
-                            value={newFashion.link}
+                            id="name"
+                            name="name" 
+                            placeholder="enter a fashion trend name" 
+                            value={newFashion.name}
                             onChange={handleChange}
                         />
                     </label>
                     </div>
+                   <div>
+                    <label htmlFor='image'>
+                        Image
+                        <input 
+                            type="text" 
+                            id="image"
+                            name="image" 
+                            placeholder="enter a fashion trend image" 
+                            value={newFashion.image}
+                            onChange={handleChange}
+                        />
+                    </label>
+                    </div>
+                    <div>
+                    <label htmlFor='description'>
+                        Title
+                        <input 
+                            type="text" 
+                            id="description"
+                            name="description" 
+                            placeholder="enter the fashions description" 
+                            value={newFashion.description}
+                            onChange={handleChange}
+                        />
+                    </label>
+                  
+                </div>
                 <br />
                 <input type="submit" value="Create a new Word" />
             </form>

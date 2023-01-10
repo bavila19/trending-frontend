@@ -64,7 +64,11 @@ function BookShow(props) {
         <section>
             <div className="book">
                 <h1>Book Show Page</h1>
-                <h2>{book.title}</h2>
+                <img src={book.image} alt={book.name + " image"} />
+                <h2>{book.name}</h2>
+                <h3>{book.author}</h3>
+                <h3>{book.description}</h3>
+                {/* <img src={book.image} alt={book.name + " image"} /> */}
                 <div>
                     <button className="delete" onClick={removeBook}>Remove book</button>
                 </div>
@@ -73,6 +77,13 @@ function BookShow(props) {
         <section>
             <h2>Edit this Book Trend</h2>
             <form onSubmit={updateBook}>
+            <input
+                        type="text"
+                        value={editForm.image}
+                        name="image"
+                        placeholder="image URL"
+                        onChange={handleChange}
+                    />
                 <input
                     type="text"
                     value={editForm.title}
@@ -80,6 +91,20 @@ function BookShow(props) {
                     placeholder="title"
                     onChange={handleChange}
                 />
+                <input
+                    type="text"
+                    value={editForm.author}
+                    name= "author"
+                    placeholder="author"
+                    onChange={handleChange}
+                />
+                <input
+                        type="text"
+                        value={editForm.description}
+                        name="description"
+                        placeholder="description"
+                        onChange={handleChange}
+                    />
                 <input type="submit" value="Update Book" />
             </form>
         </section>

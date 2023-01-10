@@ -65,6 +65,8 @@ function FashionShow(props) {
             <div className="person">
                 <h1>Fashion Show Page</h1>
                 <h2>{fashion.name}</h2>
+                <img src={fashion.image} alt={fashion.name + " image"} />
+                <h2>{fashion.description}</h2>
                 <div>
                     <button className="delete" onClick={removeFashion}>Remove Fashion</button>
                 </div>
@@ -73,14 +75,28 @@ function FashionShow(props) {
         <section>
             <h2>Edit this Fashion Trend</h2>
             <form onSubmit={updateFashion}>
-                <input
-                    type="text"
-                    value={editForm.name}
-                    name="name"
-                    placeholder="name"
-                    onChange={handleChange}
-                />
-                <input type="submit" value="Update Fashion" />
+            <input
+                        type="text"
+                        value={editForm.name}
+                        name="name"
+                        placeholder="name"
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="text"
+                        value={editForm.image}
+                        name="image"
+                        placeholder="image URL"
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="text"
+                        value={editForm.description}
+                        name="description"
+                        placeholder="description"
+                        onChange={handleChange}
+                    />
+                    <input type="submit" value="Update Fashion" />
             </form>
         </section>
         </>

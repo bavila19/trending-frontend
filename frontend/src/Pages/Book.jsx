@@ -4,10 +4,10 @@ const Book = (props) => {
 		const [ book, setBook ] = useState([]);
     const [newBook, setNewBook] = useState({
       image:"",
-      title:"",
+      name:"",
       author:"",
       description: "",
-      link: "",
+      // link: "",
     });
         const BASE_URL = "https://bce-trending.herokuapp.com/book";
         const getBook= async ()=>{
@@ -22,7 +22,7 @@ const Book = (props) => {
 
         const handleChange = (e) =>{
           const userInput = {...newBook}
-          userInput[e.target.title] = e.target.value
+          userInput[e.target.name] = e.target.value
           setNewBook(userInput)
         }
 
@@ -40,17 +40,17 @@ const Book = (props) => {
             const response = await fetch(BASE_URL, requestOptions)
             // 4. check our response - 
             // 5. parse the data from the response into JS (from JSON) 
-            const createdBook= await response.json()
-            console.log(createdBook)
+            const createdTrendb= await response.json()
+            console.log(createdTrendb)
             // update local state with response (json from be)
-            setBook([...book, createdBook])
+            setBook([...book, createdTrendb])
             // reset newForm state so that our form empties out
             setNewBook({
               image:"",
-              title:"",
+              name:"",
               author:"",
               description: "",
-              link: "",
+              // link: "",
             })
           }catch(err){
             console.log(err)
@@ -58,17 +58,27 @@ const Book = (props) => {
         }
 
         const loaded = () => {
-            return book?.map((book) => {
-              return (
-                <div key={book._id}>
-                  <img src={book.image} alt={book.name}  height={200} width={200}/>
-                  <h1>{book.title}</h1>
-                  <h1>{book.author}</h1>
-                  <h3>{book.description}</h3>
-                  <h3>{book.link}</h3>
-                </div>
-              );
-            });
+          return (<>
+              
+            <section className="trendb-list">
+                {book?.map((trendb) => {
+                    return (
+                        <div key={trendb._id} to={`/book/${trendb._id}`}>
+                        <div className='trendb-card'>
+                            {/* React optimization / difference */}
+                            <img src={trendb.image} alt={trendb.name}  height={200} width={200}/>
+                            <h1>{trendb.name}</h1>
+                            <h3>{trendb.author}</h3>
+                            <h3>{trendb.description}</h3>
+                            {/* <h3>{trend.link}</h3> */}
+                        </div>
+                        </div>
+                    )
+                })
+                }
+            </section>
+            </>
+          )
           };
         
           const loading = () => (
@@ -103,7 +113,7 @@ const Book = (props) => {
                           value={newBook.image}
                           onChange={handleChange}
                       />
-                  </label>
+                  </label> 
                 </div>
                 <div>
                   <label htmlFor= "bookTitle">
@@ -111,9 +121,9 @@ const Book = (props) => {
                     <input
                       type="text"
                       id="name"
-                      title="title"
+                      name="name"
                       placeholder="Enter A Book"
-                      value={newBook.title}
+                      value={newBook.name}
                       onChange={handleChange}
                     />
                   </label>
@@ -144,19 +154,19 @@ const Book = (props) => {
                         />
                     </label>
                   </div>
-                  <div>
+                  {/* <div>
                     <label htmlFor='link'>
                         Link
                         <input 
                             type="text" 
                             id="link"
-                            name="link" 
+                            title="link" 
                             placeholder="Enter link for book" 
                             value={newBook.link}
                             onChange={handleChange}
                         />
                     </label>
-                    </div>
+                    </div> */}
                 <br />
                 <input
                   type="submit"
