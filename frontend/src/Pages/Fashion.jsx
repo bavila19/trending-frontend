@@ -8,7 +8,7 @@ const Fashion = (props) => {
         image: "",
         description: "",
       });
-        const BASE_URL = "http://localhost:4000/fashion";
+        const BASE_URL = "https://bce-trending.herokuapp.com/fashion";
         const getFashion= async ()=>{
             try{
                 const response = await fetch(BASE_URL)
@@ -37,9 +37,9 @@ const Fashion = (props) => {
               body: JSON.stringify(currentState)             
             }
             const response = await fetch(BASE_URL, requestOptions)
-            const createdTrend = await response.json()
-            console.log(createdTrend)
-            setFashion([...fashion, createdTrend])
+            const createdTrendf = await response.json()
+            console.log(createdTrendf)
+            setFashion([...fashion, createdTrendf])
             setNewFashion({
               name: "",
               image: "",
@@ -51,31 +51,16 @@ const Fashion = (props) => {
           }
       }
 
-        // const loaded = () => {
-        //     return fashion?.map((fashion) => {
-        //       return (
-        //         <div key={fashion._id}>
-        //           <img src={fashion.image} alt={fashion.name}  height={200} width={200}/>
-        //           <h1>{fashion.name}</h1>
-        //           <h3>{fashion.description}</h3>
-        //           <h3>{fashion.link}</h3>
-        //         </div>
-        //       );
-        //     });
-        //   };
-
         const loaded = () => {
           return (<>
-              
-              <section className="trend-list">
-                  {fashion?.map((trend) => {
+              <section className="trendf-list">
+                  {fashion?.map((trendf) => {
                       return (
-                          <div key={trend._id} to={`/fashion/${trend._id}`}>
+                          <div key={trendf._id} to={`/fashion/${trendf._id}`}>
                           <div className='fashion-card'>
-                              {/* React optimization / difference */}
-                              <h1>{trend.name}</h1>
-                              <img src={trend.image} alt={trend.name}  height={200} width={200}/>
-                              <h3>{trend.description}</h3>
+                              <h1>{trendf.name}</h1>
+                              <img src={trendf.image} alt={trendf.name}  height={200} width={200}/>
+                              <h3>{trendf.description}</h3>
                           </div>
                           </div>
                       )
@@ -134,7 +119,7 @@ const Fashion = (props) => {
                     </div>
                     <div>
                     <label htmlFor='description'>
-                        Title
+                        Description
                         <input 
                             type="text" 
                             id="description"

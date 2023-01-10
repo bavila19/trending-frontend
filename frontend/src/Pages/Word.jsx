@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react';
 const Word = (props) => {
 
 		const [ word, setWord ] = useState([]);
-        const [newWord, setNewWord] = useState({
-          name: "",
-          description: "",
-          link: "",
-        });
+      const [ newWord, setNewWord ] = useState ({
+        name: "",
+        image: "",
+        description: "",
+      });
         const BASE_URL = "https://bce-trending.herokuapp.com/word";
         const getWord= async ()=>{
             try{
@@ -18,61 +18,58 @@ const Word = (props) => {
                 console.log(err)
             }
         }
-
+        
         const handleChange = (e) => {
           const userInput = {...newWord}
           userInput[e.target.name] = e.target.value
           setNewWord(userInput)
-      }
+        }
 
-    //post here 
-      const handleSubmit = async (e) => {
-        // 0. prevent default (event object method)
-        e.preventDefault()
-        // 1. capturing our local state
-        const currentState = { ...newWord }
-        // check any fields for property data types / truthy value (function call - stretch)
-        try {
+        const handleSubmit = async (e) => {
+          e.preventDefault()
+          const currentState = { ...newWord}
+          try {
             const requestOptions = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(currentState)
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(currentState)             
             }
-            // 2. specify request method , headers, Content-Type
-            // 3. make fetch to BE - sending data (requestOptions)
-
-            // 3a fetch sends the data to API - (mongo)
             const response = await fetch(BASE_URL, requestOptions)
-            // 4. check our response - 
-            // 5. parse the data from the response into JS (from JSON) 
-            const createdWord = await response.json()
-            console.log(createdWord)
-            // update local state with response (json from be)
-            setWord([...word, createdWord])
-            // reset newForm state so that our form empties out
+            const createdTrendw = await response.json()
+            console.log(createdTrendw)
+            setWord([...word, createdTrendw])
             setNewWord({
               name: "",
+              image: "",
               description: "",
-              link: "",
             })
 
-        } catch (err) {
+          } catch (err) {
             console.log(err)
-        }
-    }
+          }
+      }
+
         const loaded = () => {
-            return word?.map((word) => {
-              return (
-                <div key={word._id}>
-                  <h1>{word.name}</h1>
-                  <h3>{word.description}</h3>
-                  <h3>{word.link}</h3>
-                </div>
-              );
-            });
-          };
+          return (<>
+              <section className="trendw-list">
+                  {word?.map((trendw) => {
+                      return (
+                          <div key={trendw._id} to={`/word/${trendw._id}`}>
+                          <div className='word-card'>
+                              <h1>{trendw.name}</h1>
+                              <img src={trendw.image} alt={trendw.name}  height={200} width={200}/>
+                              <h3>{trendw.description}</h3>
+                          </div>
+                          </div>
+                      )
+                  })
+                  }
+              </section>
+          </>
+          )
+      }
         
           const loading = () => (
             <section className="word-list">
@@ -88,25 +85,37 @@ const Word = (props) => {
             </section>
           );
         
-        
         useEffect(()=>{getWord()},[])
-        console.log(`this is word ${word.length}, but I'm nineteen and don't know how to read`)
+        console.log(`there is ${word.length} fashion available to render`)
         return (
             <section className="word-list">
-              <h2>New word </h2>
-              <form onSubmit={handleSubmit}>
-                    <div>
-                        <label htmlFor='name'>
-                            Word
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                placeholder="enter a Word"
-                                value={newWord.name}
-                                onChange={handleChange}
-                            />
-                        </label>
+            <h2>New Word</h2>
+            <form onSubmit={handleSubmit}>
+                <div>
+                <label htmlFor='name'>
+                        Name
+                        <input 
+                            type="text" 
+                            id="name"
+                            name="name" 
+                            placeholder="enter a word trend name" 
+                            value={newWord.name}
+                            onChange={handleChange}
+                        />
+                    </label>
+                    </div>
+                   <div>
+                    <label htmlFor='image'>
+                        Image
+                        <input 
+                            type="text" 
+                            id="image"
+                            name="image" 
+                            placeholder="enter a meme or word image" 
+                            value={newWord.image}
+                            onChange={handleChange}
+                        />
+                    </label>
                     </div>
                     <div>
                     <label htmlFor='description'>
@@ -115,29 +124,17 @@ const Word = (props) => {
                             type="text" 
                             id="description"
                             name="description" 
-                            placeholder="enter the word trend description" 
+                            placeholder="enter the words description" 
                             value={newWord.description}
                             onChange={handleChange}
                         />
                     </label>
-                  </div>
-                  <div>
-                    <label htmlFor='link'>
-                        Link
-                        <input 
-                            type="text" 
-                            id="link"
-                            name="link" 
-                            placeholder="enter the word trend link" 
-                            value={newWord.link}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    </div>
-                        <br />
-                        <input type="submit" value="Create a new Word" />
-                </form>
-                {word && word.length ? loaded() : loading()}
+                  
+                </div>
+                <br />
+                <input type="submit" value="Create a new Word" />
+            </form>
+            {word && word.length ? loaded() : loading()}
             </section>
           );
 }

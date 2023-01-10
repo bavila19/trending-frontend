@@ -77,6 +77,8 @@ function WordShow(props) {
             <div className="Word">
                 <h1>Word Show Page</h1>
                 <h2>{word.name}</h2>
+                <h2>{word.description}</h2>
+                <img src={word.image} alt={word.name + " image"} />
                 <div>
                     <button className="delete" onClick={removeWord}>Remove Word</button>
                 </div>
@@ -92,6 +94,20 @@ function WordShow(props) {
                     placeholder="name"
                     onChange={handleChange}
                 />
+                <input
+                    type="text"
+                    value={editForm.description}
+                    name="description"
+                    placeholder="description"
+                    onChange={handleChange}
+                />
+                <input
+                        type="text"
+                        value={editForm.image}
+                        name="image"
+                        placeholder="image URL"
+                        onChange={handleChange}
+                    />
                 <input type="submit" value="Update Word" />
             </form>
         </section>
