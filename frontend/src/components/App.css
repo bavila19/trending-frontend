@@ -3,13 +3,14 @@ body {
   background-size:100% 100vh;
   margin:0px;
   background-repeat:repeat;
-  height:100vh;
+  min-height:100vh;
   font-family: 'Special Elite', cursive;
   /* Border */
   border: 1px solid #d1d5db;
   border-bottom-color: transparent;
   border-radius: 4ßpx;
   border-bottom: 1px solid #d1d5db;
+
   /* Center the content horizontally */
   align-items: center;
   display: flex;
