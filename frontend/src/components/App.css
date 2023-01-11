@@ -1,24 +1,40 @@
-body{
-  background-image: url("https://media.istockphoto.com/id/968084048/photo/modern-abstract-background.jpg?b=1&s=170667a&w=0&k=20&c=GkVU26T4vEVTXWwAvHzw5JOY004N1mWwBDiL2zyM-Xc=");
-  background-size:cover;
+body {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAA1BMVEUqRlvIOp4TAAAAR0lEQVR4nO3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO8GxYgAAb0jQ/cAAAAASUVORK5CYII=);
+  background-size:100% 100vh;
   margin:0px;
-  background-repeat: no-repeat;
-  height:100vh;
-  font-family: ;
-  font-size: x-large;
-  color: rgb(21, 22, 22);
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-auto-rows: minmax(10px, 50px);
-  grid-gap: 1rem;
-  margin: 0 auto;
-  max-width: 1200px;
-  padding: 1rem;
-  grid-auto-rows: auto;
+  background-repeat:repeat;
+  min-height:100vh;
+  font-family: 'Special Elite', cursive;
+  /* Border */
+  border: 1px solid #d1d5db;
+  border-bottom-color: transparent;
+  border-radius: 4ßpx;
+  border-bottom: 1px solid #d1d5db;
+
+  /* Center the content horizontally */
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  padding: 16px;
+  margin-right: 12px;
+  /* Take remaining width */
+  flex: 1;
+  border-top: 1px solid #d1d5db;
+  padding: 16px;
+  display: none;
+  display: block;
 }
 
-.navBar{
-  border: 5px solid rgba(149, 139, 139);
-  background-color: rgba(116, 116, 236, 0.72);
-  color: blueviolet;
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+.centering {
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  padding: 16px;
+
+}
+
+a {
+  color: gold;
 }
