@@ -49,7 +49,7 @@ function BookShow(props) {
             }
             const response = await fetch(URL, options)
             const deletedTrendb = await response.json()
-            navigate('/')
+            navigate('/book')
         } catch (err) {
             console.log(err)
             navigate(URL)

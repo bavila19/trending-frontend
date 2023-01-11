@@ -9,7 +9,7 @@ const Word = (props) => {
     image: "",
     description: "",
   });
-  const BASE_URL = "https://trending-backend.herokuapp.com/book";
+  const BASE_URL = "https://trending-backend.herokuapp.com/word";
   const getWord = async () => {
     try {
       const response = await fetch(BASE_URL)

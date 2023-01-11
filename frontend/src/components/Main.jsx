@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router";
 import Home from "../Pages/Home"
-import WordShow from "../Pages/Wordshow"
+import WordShow from "../Pages/WordShow"
 import Word from "../Pages/Word";
 import Book from "../Pages/Book";
 import BookShow from "../Pages/BookShow"
 import Fashion from "../Pages/Fashion";
-import FashionShow from "../Pages/Fashionshow"
+import FashionShow from "../Pages/FashionShow"
 
 const Main = (props) => {
     return (

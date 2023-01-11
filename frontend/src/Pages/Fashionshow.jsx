@@ -49,7 +49,7 @@ function FashionShow(props) {
             }
             const response = await fetch(URL, options)
             const deletedTrendf = await response.json()
-            navigate('/')
+            navigate('/fashion')
         } catch (err) {
             console.log(err)
             navigate(URL)
