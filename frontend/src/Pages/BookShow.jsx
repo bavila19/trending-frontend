@@ -4,19 +4,19 @@ import { useState, useEffect } from 'react'
 function BookShow(props) {
     const [trendb, setTrendb] = useState(null)
     const [editForm, setEditForm] = useState("")
-        const navigate = useNavigate()
+    const navigate = useNavigate()
     const params = useParams()
     const { id } = params
-    const URL = `https://bce-trending.herokuapp.com/book/${id}`
+    const URL = `https://trending-backend.herokuapp.com/book/${id}`
 
-    const handleChange = (e) => setEditForm ({ ...editForm, [e.target.name]: e.target.value})
+    const handleChange = (e) => setEditForm({ ...editForm, [e.target.name]: e.target.value })
 
     const updateTrendb = async (e) => {
         e.preventDefault()
         try {
             const options = {
                 method: "PUT",
-                headers: { "Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(editForm)
             }
             const response = await fetch(URL, options)
@@ -49,7 +49,7 @@ function BookShow(props) {
             }
             const response = await fetch(URL, options)
             const deletedTrendb = await response.json()
-            navigate('/')
+            navigate('/book')
         } catch (err) {
             console.log(err)
             navigate(URL)
@@ -61,55 +61,55 @@ function BookShow(props) {
 
     const loaded = () => (
         <>
-        <section>
-            <div className="book">
-                <h1>Book Show Page</h1>
-                <img src={trendb.image} alt={trendb.name + " image"} />
-                <h2>{trendb.name}</h2>
-                <h3>{trendb.author}</h3>
-                <h3>{trendb.description}</h3>
-                {/* <img src={book.image} alt={book.name + " image"} /> */}
-                <div>
-                    <button className="delete" onClick={removeTrendb}>Remove book</button>
+            <section>
+                <div className="book">
+                    <h1>Book Show Page</h1>
+                    <img src={trendb.image} alt={trendb.name + " image"} />
+                    <h2>{trendb.name}</h2>
+                    <h3>{trendb.author}</h3>
+                    <h3>{trendb.description}</h3>
+                    <div>
+                        <button className="delete" onClick={removeTrendb}>Remove book</button>
+                    </div>
                 </div>
-            </div>
-        </section>
-        {/* <section>
-            <h2>Edit this Book Trend</h2>
-            <form onSubmit={updateTrendb}>
-            <input
+            </section>
+            <section>
+                <h2>Edit this Book Trend</h2>
+                <form onSubmit={updateTrendb}>
+                    <input
                         type="text"
                         value={editForm.image}
                         name="image"
                         placeholder="image URL"
                         onChange={handleChange}
                     />
-                <input
-                    type="text"
-                    value={editForm.title}
-                    name= "title"
-                    placeholder="title"
-                    onChange={handleChange}
-                />
-                <input
-                    type="text"
-                    value={editForm.author}
-                    name= "author"
-                    placeholder="author"
-                    onChange={handleChange}
-                />
-                <input
+                    <input
+                        type="text"
+                        value={editForm.name}
+                        name="name"
+                        placeholder="name"
+
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="text"
+                        value={editForm.author}
+                        name="author"
+                        placeholder="author"
+                        onChange={handleChange}
+                    />
+                    <input
                         type="text"
                         value={editForm.description}
                         name="description"
                         placeholder="description"
                         onChange={handleChange}
                     />
-                <input type="submit" value="Update Book" />
-            </form>
-        </section>*/}
+                    <input type="submit" value="Update Book" />
+                </form>
+            </section>
         </>
-    ) 
+    )
     const loading = () => (
         <>
             <h1>
