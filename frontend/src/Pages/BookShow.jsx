@@ -2,93 +2,93 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 function BookShow(props) {
-    const [book, setBook] = useState(null)
+    const [trendb, setTrendb] = useState(null)
     const [editForm, setEditForm] = useState("")
-        const navigate = useNavigate()
+    const navigate = useNavigate()
     const params = useParams()
     const { id } = params
-    const URL = `https://bce-trending.herokuapp.com/book/${id}`
+    const URL = `https://trending-backend.herokuapp.com/book/${id}`
 
-    const handleChange = (e) => setEditForm ({ ...editForm, [e.target.name]: e.target.value})
+    const handleChange = (e) => setEditForm({ ...editForm, [e.target.name]: e.target.value })
 
-    const updateBook = async (e) => {
+    const updateTrendb = async (e) => {
         e.preventDefault()
         try {
             const options = {
                 method: "PUT",
-                headers: { "Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(editForm)
             }
             const response = await fetch(URL, options)
-            const updatedBook = await response.json()
+            const updatedTrendb = await response.json()
 
-            setBook(updatedBook)
-            setEditForm(updatedBook)
+            setTrendb(updatedTrendb)
+            setEditForm(updatedTrendb)
         } catch (err) {
             console.log(err)
             navigate(URL)
         }
     }
 
-    const getBook = async () => {
+    const getTrendb = async () => {
         try {
             const response = await fetch(URL)
-            const foundBook = await response.json()
+            const foundTrendb = await response.json()
 
-            setBook(foundBook)
-            setEditForm(foundBook)
+            setTrendb(foundTrendb)
+            setEditForm(foundTrendb)
         } catch (err) {
             console.log(err)
         }
     }
 
-    const removeBook = async () => {
+    const removeTrendb = async () => {
         try {
             const options = {
                 method: "DELETE"
             }
             const response = await fetch(URL, options)
-            const deletedBook = await response.json()
-            navigate('/')
+            const deletedTrendb = await response.json()
+            navigate('/book')
         } catch (err) {
             console.log(err)
             navigate(URL)
         }
     }
     useEffect(() => {
-        getBook()
+        getTrendb()
     }, [])
 
     const loaded = () => (
         <>
-        <section>
-            <div className="book">
-                <h1>Book Show Page</h1>
-                <img src={book.image} alt={book.name + " image"} />
-                <h2>{book.title}</h2>
-                <h2>{book.author}</h2>
-                <h3>{book.description}</h3>
-                <h2>{book.link}</h2>
-                <div>
-                    <button className="delete" onClick={removeBook}>Remove book</button>
+            <section>
+                <div className="book">
+                    <h1>Book Show Page</h1>
+                    <img src={trendb.image} alt={trendb.name + " image"} />
+                    <h2>{trendb.name}</h2>
+                    <h3>{trendb.author}</h3>
+                    <h3>{trendb.description}</h3>
+                    <div>
+                        <button className="delete" onClick={removeTrendb}>Remove book</button>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <section>
-            <h2>Edit this Book Trend</h2>
-            <form onSubmit={updateBook}>
-                <input
-                    type="text"
-                    value={editForm.image}
-                    name= "image"
-                    placeholder="image URL"
-                    onChange={handleChange}
-                />
-                <input
+            </section>
+            <section>
+                <h2>Edit this Book Trend</h2>
+                <form onSubmit={updateTrendb}>
+                    <input
                         type="text"
-                        value={editForm.title}
-                        name="title"
-                        placeholder="title"
+                        value={editForm.image}
+                        name="image"
+                        placeholder="image URL"
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="text"
+                        value={editForm.name}
+                        name="name"
+                        placeholder="name"
+
                         onChange={handleChange}
                     />
                     <input
@@ -105,16 +105,9 @@ function BookShow(props) {
                         placeholder="description"
                         onChange={handleChange}
                     />
-                     <input
-                        type="link"
-                        value={editForm.link}
-                        name="link"
-                        placeholder="link"
-                        onChange={handleChange}
-                    />
-                <input type="submit" value="Update Book" />
-            </form>
-        </section>
+                    <input type="submit" value="Update Book" />
+                </form>
+            </section>
         </>
     )
     const loading = () => (
@@ -125,7 +118,7 @@ function BookShow(props) {
         </>
     );
     return (
-        <div>{book ? loaded() : loading()}</div>
+        <div>{trendb ? loaded() : loading()}</div>
     )
 }
 
