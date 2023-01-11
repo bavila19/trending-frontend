@@ -122,3 +122,5 @@ function BookShow(props) {
     )
 }
 
+
+export default BookShow
