@@ -64,7 +64,7 @@ const Book = (props) => {
           return (
             <Link key={trendb._id} to={`/book/${trendb._id}`}>
               <div className='trendb-card'>
-
+              
                 <img src={trendb.image} alt={trendb.name} height={200} width={200} />
                 <h1>{trendb.name}</h1>
                 <h3>{trendb.author}</h3>
@@ -93,7 +93,6 @@ const Book = (props) => {
       </h1>
     </section>
   );
-
 
   useEffect(() => { getBook() }, [])
   console.log(`there is ${book.length} books available to render`)

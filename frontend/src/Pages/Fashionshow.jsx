@@ -99,6 +99,7 @@ function FashionShow(props) {
                     <input type="submit" value="Update Fashion" />
                 </form>
             </section>
+
         </>
     )
     const loading = () => (

@@ -88,6 +88,7 @@ function BookShow(props) {
                         value={editForm.name}
                         name="name"
                         placeholder="name"
+
                         onChange={handleChange}
                     />
                     <input
