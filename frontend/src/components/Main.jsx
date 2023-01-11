@@ -11,19 +11,19 @@ const Main = (props) => {
     return (
         <main>
             <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/word" element={<Word/>}/>
-                <Route path="/word/:id" element={<WordShow />}/>
-                <Route path="/book" element={<Book/>}/>
-                <Route path="/book/:id" element={<BookShow />}/>
-                <Route path="/fashion" element={<Fashion/>}/>
-                <Route path="/fashion/:id" element={<FashionShow />}/>
-                </Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/word" element={<Word />} />
+                <Route path="/word/:id" element={<WordShow />} />
+                <Route path="/book" element={<Book />} />
+                <Route path="/book/:id" element={<BookShow />} />
+                <Route path="/fashion" element={<Fashion />} />
+                <Route path="/fashion/:id" element={<FashionShow />} />
+            </Routes>
         </main>
     )
 };
 
-    
 
-   
-  export default Main;
+
+
+export default Main;
