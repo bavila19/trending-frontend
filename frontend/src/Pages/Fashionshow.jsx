@@ -64,6 +64,7 @@ function FashionShow(props) {
         <section>
             <div className="person">
                 <h1>Fashion Show Page</h1>
+                <img src={fashion.image} alt={fashion.name + " image"} />
                 <h2>{fashion.name}</h2>
                 <img src={fashion.image} alt={fashion.name + " image"} />
                 <h2>{fashion.description}</h2>

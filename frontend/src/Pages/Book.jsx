@@ -117,7 +117,7 @@ const Book = (props) => {
                   </label> 
                 </div>
                 <div>
-                  <label htmlFor= "bookTitle">
+                  <label htmlFor= "title">
                     Book
                     <input
                       type="text"

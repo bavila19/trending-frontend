@@ -86,9 +86,9 @@ function BookShow(props) {
                     />
                 <input
                     type="text"
-                    value={editForm.title}
-                    name= "title"
-                    placeholder="title"
+                    value={editForm.image}
+                    name= "image"
+                    placeholder="image URL"
                     onChange={handleChange}
                 />
                 <input
@@ -122,5 +122,3 @@ function BookShow(props) {
     )
 }
 
-
-export default BookShow
