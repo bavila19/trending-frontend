@@ -5,7 +5,7 @@ const Header = (props) => {
              <div class="centering">
             <h1>This is the nav</h1>
             </div>
-            <div className="links">
+            <div className="navBar">
             <Link to="/">Home</Link>
             <br/>
             <br></br>

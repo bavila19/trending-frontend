@@ -38,3 +38,27 @@ body {
 a {
   color: gold;
 }
+
+/* nav bar in header */
+.navBar{
+  background-color: rgb(140, 162, 162);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 18px;
+  padding-bottom: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: 65px;
+  font-size: 20px;
+  width: 95vw;
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:slategrey;
+  border-radius: 20px;
+  border: 1px solid rgb(122, 111, 133);
+}

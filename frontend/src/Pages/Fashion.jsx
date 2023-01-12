@@ -60,13 +60,12 @@ const Fashion = (props) => {
       <section className="trendf-list">
         {fashion?.map((trendf) => {
           return (
-            <Link key={trendf._id} to={`/fashion/${trendf._id}`}>
               <div className='fashion-card'>
                 <h1>{trendf.name}</h1>
                 <img src={trendf.image} alt={trendf.name} height={200} width={200} />
                 <h3>{trendf.description}</h3>
+                <Link key={trendf._id} to={`/fashion/${trendf._id}`}>Edit</Link>
               </div>
-            </Link>
           )
         })
         }

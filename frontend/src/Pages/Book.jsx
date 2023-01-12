@@ -62,16 +62,14 @@ const Book = (props) => {
       <section className="trendb-list">
         {book?.map((trendb) => {
           return (
-            <Link key={trendb._id} to={`/book/${trendb._id}`}>
-              <div className='trendb-card'>
-              
-                <img src={trendb.image} alt={trendb.name} height={200} width={200} />
-                <h1>{trendb.name}</h1>
-                <h3>{trendb.author}</h3>
-                <h3>{trendb.description}</h3>
-
-              </div>
-            </Link>
+            <div className='card'>
+              <img src={trendb.image} alt={trendb.name} height={200} width={200} />
+              <h1>{trendb.name}</h1>
+              <h3>{trendb.author}</h3>
+              <h3>{trendb.description}</h3>
+              <Link key={trendb._id} to={`/book/${trendb._id}`}>Edit</Link>
+            </div>
+            
           )
         })
         }
