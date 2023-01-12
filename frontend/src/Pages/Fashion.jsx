@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import React from 'react'
 
 const Fashion = (props) => {
 
@@ -57,16 +58,15 @@ const Fashion = (props) => {
 
   const loaded = () => {
     return (<>
-      <section className="trendf-list">
+      <section className="trendw-list">
         {fashion?.map((trendf) => {
           return (
-            <Link key={trendf._id} to={`/fashion/${trendf._id}`}>
-              <div className='fashion-card'>
+              <div className='card' key={trendf._id}>
                 <h1>{trendf.name}</h1>
-                <img src={trendf.image} alt={trendf.name} height={200} width={200} />
+                <img src={trendf.image} alt={trendf.name} width={550} />
                 <h3>{trendf.description}</h3>
+                <Link key={trendf._id} to={`/fashion/${trendf._id}`}>Edit</Link>
               </div>
-            </Link>
           )
         })
         }
@@ -74,7 +74,7 @@ const Fashion = (props) => {
     </>
     )
   }
-
+  
   const loading = () => (
     <section className="fashion-list">
       <h1>
@@ -83,16 +83,16 @@ const Fashion = (props) => {
           <img
             className="spinner"
             src="https://freesvg.org/img/1544764567.png"
-          />{" "}
+            />{" "}
         </span>
       </h1>
     </section>
   );
-
+  
   useEffect(() => { getFashion() }, [])
   console.log(`there is ${fashion.length} fashion available to render`)
   return (
-    <section className="fashion-list">
+    <section className="new-list">
       <h2>New Fashion</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -105,7 +105,7 @@ const Fashion = (props) => {
               placeholder="enter a fashion trend name"
               value={newFashion.name}
               onChange={handleChange}
-            />
+              />
           </label>
         </div>
         <div>
@@ -118,7 +118,7 @@ const Fashion = (props) => {
               placeholder="enter a fashion trend image"
               value={newFashion.image}
               onChange={handleChange}
-            />
+              />
           </label>
         </div>
         <div>
@@ -131,7 +131,7 @@ const Fashion = (props) => {
               placeholder="enter the fashions description"
               value={newFashion.description}
               onChange={handleChange}
-            />
+              />
           </label>
 
         </div>
