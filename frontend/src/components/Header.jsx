@@ -3,7 +3,10 @@ const Header = (props) => {
     return (
         <div>
              <div class="centering">
-            <h1>This is the nav</h1>
+           <div id="trend">
+            <h1>#Trending</h1> 
+           </div>
+            
             </div>
             <div className="navBar">
             <Link to="/">Home</Link>

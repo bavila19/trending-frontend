@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import React from 'react'
 
 const Fashion = (props) => {
 
@@ -57,10 +58,10 @@ const Fashion = (props) => {
 
   const loaded = () => {
     return (<>
-      <section className="trendf-list">
+      <section className="trendw-list">
         {fashion?.map((trendf) => {
           return (
-              <div className='fashion-card'>
+              <div className='card'>
                 <h1>{trendf.name}</h1>
                 <img src={trendf.image} alt={trendf.name} height={200} width={200} />
                 <h3>{trendf.description}</h3>

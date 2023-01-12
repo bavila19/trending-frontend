@@ -59,7 +59,7 @@ const Book = (props) => {
   const loaded = () => {
     return (<>
 
-      <section className="trendb-list">
+      <section className="trendw-list">
         {book?.map((trendb) => {
           return (
             <div className='card'>
@@ -95,7 +95,7 @@ const Book = (props) => {
   useEffect(() => { getBook() }, [])
   console.log(`there is ${book.length} books available to render`)
   return (
-    <section className="book-list">
+    <section className="new-list">
       <h2>New Book</h2>
       <form onSubmit={handleSubmit}>
         <div>
