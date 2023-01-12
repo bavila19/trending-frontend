@@ -57,12 +57,12 @@ const Word = (props) => {
       <section className="trendw-list">
         {word?.map((trendw) => {
           return (
-            <div className='word-card'>
+              <div className='card' key={trendw._id}>
                 <h1>{trendw.name}</h1>
-                <img src={trendw.image} alt={trendw.name} height={200} width={200} />
+                <img className='pic' src={trendw.image} alt={trendw.name} height={200} width={200} />
                 <h3>{trendw.description}</h3>
                 <Link key={trendw._id} to={`/word/${trendw._id}`}>Edit</Link>
-            </div>
+              </div>
           )
         })
         }
@@ -89,8 +89,9 @@ const Word = (props) => {
   console.log(`there is ${word.length} fashion available to render`)
   return (
     <section className="word-list">
+      <div className='new-list'>
       <h2>New Word</h2>
-      <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor='name'>
             Name
@@ -105,7 +106,7 @@ const Word = (props) => {
           </label>
         </div>
         <div>
-          <label htmlFor='image'>
+          <label htmlFor='image' >
             Image
             <input
               type="text"
@@ -133,6 +134,8 @@ const Word = (props) => {
         <br />
         <input type="submit" value="Create a new Word" />
       </form>
+      </div>
+      
       {word && word.length ? loaded() : loading()}
     </section>
   );

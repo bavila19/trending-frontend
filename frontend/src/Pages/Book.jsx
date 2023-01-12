@@ -59,19 +59,17 @@ const Book = (props) => {
   const loaded = () => {
     return (<>
 
-      <section className="trendb-list">
+      <section className="trendw-list">
         {book?.map((trendb) => {
           return (
-            <Link key={trendb._id} to={`/book/${trendb._id}`}>
-              <div className='trendb-card'>
-              
-                <img src={trendb.image} alt={trendb.name} height={200} width={200} />
-                <h1>{trendb.name}</h1>
-                <h3>{trendb.author}</h3>
-                <h3>{trendb.description}</h3>
-
-              </div>
-            </Link>
+            <div className='card' key={trendb._id}>
+              <img src={trendb.image} alt={trendb.name} height={200} width={200} />
+              <h1>{trendb.name}</h1>
+              <h3>{trendb.author}</h3>
+              <h3>{trendb.description}</h3>
+              <Link key={trendb._id} to={`/book/${trendb._id}`}>Edit</Link>
+            </div>
+            
           )
         })
         }
@@ -97,7 +95,7 @@ const Book = (props) => {
   useEffect(() => { getBook() }, [])
   console.log(`there is ${book.length} books available to render`)
   return (
-    <section className="book-list">
+    <section className="new-list">
       <h2>New Book</h2>
       <form onSubmit={handleSubmit}>
         <div>
