@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
-function WordShow(props) {
+function WordShowPage(props) {
     const [trendw, setTrendw] = useState(null)
     const [editForm, setEditForm] = useState("")
     const navigate = useNavigate()
@@ -114,4 +114,4 @@ function WordShow(props) {
 }
 
 
-export default WordShow
+export default WordShowPage

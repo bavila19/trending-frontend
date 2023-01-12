@@ -61,7 +61,7 @@ const Fashion = (props) => {
       <section className="trendw-list">
         {fashion?.map((trendf) => {
           return (
-              <div className='card'>
+              <div className='card' key={trendf._id}>
                 <h1>{trendf.name}</h1>
                 <img src={trendf.image} alt={trendf.name} height={200} width={200} />
                 <h3>{trendf.description}</h3>

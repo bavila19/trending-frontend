@@ -57,7 +57,7 @@ const Word = (props) => {
       <section className="trendw-list">
         {word?.map((trendw) => {
           return (
-              <div className='card'>
+              <div className='card' key={trendw._id}>
                 <h1>{trendw.name}</h1>
                 <img className='pic' src={trendw.image} alt={trendw.name} height={200} width={200} />
                 <h3>{trendw.description}</h3>
