@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 const Header = (props) => {
     return (
         <div>
-             <div class="centering">
+             <div className="centering">
            <div id="trend">
             <h1>#Trending</h1> 
            </div>
