@@ -29,7 +29,7 @@ function WordShow(props) {
             navigate(URL)
         }
     }
-
+//phantom comment here
     const getTrendw = async () => {
         try {
             const response = await fetch(URL)
