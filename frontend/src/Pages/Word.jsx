@@ -59,7 +59,7 @@ const Word = (props) => {
           return (
               <div className='card' key={trendw._id}>
                 <h1>{trendw.name}</h1>
-                <img className='pic' src={trendw.image} alt={trendw.name} height={200} width={200} />
+                <img className='pic' src={trendw.image} alt={trendw.name}  width={550} />
                 <h3>{trendw.description}</h3>
                 <Link key={trendw._id} to={`/word/${trendw._id}`}>Edit</Link>
               </div>

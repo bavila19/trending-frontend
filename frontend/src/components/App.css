@@ -4,7 +4,6 @@ body {
   margin:0px;
   background-repeat:repeat;
   min-height:100vh;
-  font-family: 'Special Elite', cursive;
   border: 1px solid #d1d5db;
   border-bottom-color: transparent;
   border-radius: 4ßpx;
@@ -20,9 +19,12 @@ body {
   display: none;
   display: block;
   text-shadow: 2px 2px, white;
+  font-family: 'Roboto Slab', serif;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap');
+
 
 .centering {
   align-items: center;
@@ -37,7 +39,7 @@ a {
 }
 
 .navBar{
-  background-color: rgb(140, 162, 162);
+  background-color: rgba(105, 120, 135, 0.868);
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -48,6 +50,8 @@ a {
   margin-right: 65px;
   font-size: 20px;
   width: 95vw;
+  border-radius: 15px 50px;
+  
 }
 
 .trendw-list{
@@ -66,9 +70,17 @@ a {
   background-color:slategrey;
   border-radius: 20px;
   border: 5px solid rgba(105, 120, 135, 0.868);
-  width: 400px;
+  width: 600px;
   margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
  
+}
+.bookContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
 }
 
 .new-list{
@@ -83,7 +95,8 @@ a {
 }
 
 #trend {
-  background-image: url(https://www.shutterstock.com/image-vector/realistic-chromatic-aberration-character-hashtag-260nw-1779714551.jpg);
+  font-family: 'Special Elite', cursive;
+  text-shadow: darkgoldenrod;
   width: 105vw;
   background-size: 130px;
   background-position-y: -20px;
@@ -91,18 +104,3 @@ a {
   border-radius: 15px;
 }
 
-.homePage{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: slategray;
-  border-radius: 20px;
-  border: 5px solid rgba(105, 120, 135, 0.868);
-  width: 600px;
-  
-}
-.homePic{
-  width: 600px;
-  border-radius: 5px;
-}

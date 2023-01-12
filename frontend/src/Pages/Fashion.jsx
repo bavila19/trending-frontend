@@ -63,7 +63,7 @@ const Fashion = (props) => {
           return (
               <div className='card' key={trendf._id}>
                 <h1>{trendf.name}</h1>
-                <img src={trendf.image} alt={trendf.name} height={200} width={200} />
+                <img src={trendf.image} alt={trendf.name} width={550} />
                 <h3>{trendf.description}</h3>
                 <Link key={trendf._id} to={`/fashion/${trendf._id}`}>Edit</Link>
               </div>
