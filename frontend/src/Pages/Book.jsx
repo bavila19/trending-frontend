@@ -63,11 +63,14 @@ const Book = (props) => {
         {book?.map((trendb) => {
           return (
             <div className='card' key={trendb._id}>
-              <img src={trendb.image} alt={trendb.name} height={200} width={200} />
-              <h1>{trendb.name}</h1>
-              <h3>{trendb.author}</h3>
-              <h3>{trendb.description}</h3>
-              <Link key={trendb._id} to={`/book/${trendb._id}`}>Edit</Link>
+              <div className='bookContainer'>
+                <img className='pic' src={trendb.image} alt={trendb.name} width={250} />
+                <h1>{trendb.name}</h1>
+                <h3>Author: {trendb.author}</h3>
+                <h3>Description: {trendb.description}</h3>
+                <Link key={trendb._id} to={`/book/${trendb._id}`}>Edit</Link>
+              </div>
+              
             </div>
             
           )

@@ -63,7 +63,7 @@ const Fashion = (props) => {
           return (
               <div className='card' key={trendf._id}>
                 <h1>{trendf.name}</h1>
-                <img src={trendf.image} alt={trendf.name} height={200} width={200} />
+                <img src={trendf.image} alt={trendf.name} width={550} />
                 <h3>{trendf.description}</h3>
                 <Link key={trendf._id} to={`/fashion/${trendf._id}`}>Edit</Link>
               </div>
@@ -92,7 +92,7 @@ const Fashion = (props) => {
   useEffect(() => { getFashion() }, [])
   console.log(`there is ${fashion.length} fashion available to render`)
   return (
-    <section className="fashion-list">
+    <section className="new-list">
       <h2>New Fashion</h2>
       <form onSubmit={handleSubmit}>
         <div>
