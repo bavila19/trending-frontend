@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, renderMatches } from 'react-router-dom'
 
 const Fashion = (props) => {
 
@@ -60,21 +60,21 @@ const Fashion = (props) => {
       <section className="trendf-list">
         {fashion?.map((trendf) => {
           return (
-            <Link key={trendf._id} to={`/fashion/${trendf._id}`}>
-              <div className='fashion-card'>
+            <div className='fashion-card'>
+            <Link key={trendf._id} to={`/fashion/${trendf._id}`}>Edit</Link>
                 <h1>{trendf.name}</h1>
                 <img src={trendf.image} alt={trendf.name} height={200} width={200} />
                 <h3>{trendf.description}</h3>
               </div>
-            </Link>
-          )
-        })
+            
+            )
+          })
         }
       </section>
     </>
     )
   }
-
+  
   const loading = () => (
     <section className="fashion-list">
       <h1>
@@ -83,12 +83,12 @@ const Fashion = (props) => {
           <img
             className="spinner"
             src="https://freesvg.org/img/1544764567.png"
-          />{" "}
+            />{" "}
         </span>
       </h1>
     </section>
   );
-
+  
   useEffect(() => { getFashion() }, [])
   console.log(`there is ${fashion.length} fashion available to render`)
   return (
@@ -105,7 +105,7 @@ const Fashion = (props) => {
               placeholder="enter a fashion trend name"
               value={newFashion.name}
               onChange={handleChange}
-            />
+              />
           </label>
         </div>
         <div>
@@ -118,7 +118,7 @@ const Fashion = (props) => {
               placeholder="enter a fashion trend image"
               value={newFashion.image}
               onChange={handleChange}
-            />
+              />
           </label>
         </div>
         <div>
@@ -131,7 +131,7 @@ const Fashion = (props) => {
               placeholder="enter the fashions description"
               value={newFashion.description}
               onChange={handleChange}
-            />
+              />
           </label>
 
         </div>
