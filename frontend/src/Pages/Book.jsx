@@ -41,7 +41,6 @@ const Book = (props) => {
 
       const createdTrendb = await response.json()
 
-
       setBook([...book, createdTrendb])
 
       setNewBook({

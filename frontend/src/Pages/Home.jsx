@@ -69,6 +69,5 @@ function Home ( props ) {
             </> : null }
         </div>
             ) 
-
 }
 export default Home
