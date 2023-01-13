@@ -10,7 +10,6 @@ function Home ( props ) {
             const response = await fetch (`https://trending-backend.herokuapp.com/word`)
             const wordData = await response.json()
             const randomW = Math.floor(Math.random() * wordData.length)
-            console.log(wordData[randomW])
             setWord(wordData[randomW])
     }catch(err){
         console.log(err)
@@ -22,7 +21,6 @@ function Home ( props ) {
             const response = await fetch (`https://trending-backend.herokuapp.com/fashion`)
             const fashionData = await response.json()
             const randomF = Math.floor(Math.random() * fashionData.length)
-            console.log(fashionData[randomF])
             setFashion(fashionData[randomF])
     }catch(err){
         console.log(err)
@@ -34,7 +32,6 @@ function Home ( props ) {
             const response = await fetch (`https://trending-backend.herokuapp.com/book`)
             const bookData = await response.json()
             const randomB = Math.floor(Math.random() * bookData.length)
-            console.log(bookData[randomB])
             setBook(bookData[randomB])
     }catch(err){
         console.log(err)
