@@ -39,7 +39,6 @@ const Word = (props) => {
       }
       const response = await fetch(BASE_URL, requestOptions)
       const createdTrendw = await response.json()
-      console.log(createdTrendw)
       setWord([...word, createdTrendw])
       setNewWord({
         name: "",
@@ -88,7 +87,6 @@ const Word = (props) => {
   );
 
   useEffect(() => { getWord() }, [])
-  console.log(`there is ${word.length} fashion available to render`)
   return (
     <section className="word-list">
       <div className='new-list'>
@@ -138,7 +136,6 @@ const Word = (props) => {
         <input type="submit" value="Create a new Word" />
       </form>
       </div>
-      
       {word && word.length ? loaded() : loading()}
     </section>
   );
