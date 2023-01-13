@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Book = (props) => {
   const [book, setBook] = useState([]);
@@ -12,71 +12,76 @@ const Book = (props) => {
   const BASE_URL = "https://trending-backend.herokuapp.com/book";
   const getBook = async () => {
     try {
-      const response = await fetch(BASE_URL)
-      const allBook = await response.json()
-      setBook(allBook)
+      const response = await fetch(BASE_URL);
+      const allBook = await response.json();
+      setBook(allBook);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   const handleChange = (e) => {
-    const userInput = { ...newBook }
-    userInput[e.target.name] = e.target.value
-    setNewBook(userInput)
-  }
+    const userInput = { ...newBook };
+    userInput[e.target.name] = e.target.value;
+    setNewBook(userInput);
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const currentState = { ...newBook }
+    e.preventDefault();
+    const currentState = { ...newBook };
     try {
       const requestOptions = {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(currentState)
-      }
-      const response = await fetch(BASE_URL, requestOptions)
+        body: JSON.stringify(currentState),
+      };
+      const response = await fetch(BASE_URL, requestOptions);
 
-      const createdTrendb = await response.json()
+      const createdTrendb = await response.json();
 
-      setBook([...book, createdTrendb])
+      setBook([...book, createdTrendb]);
 
       setNewBook({
         image: "",
         name: "",
         author: "",
         description: "",
-
-      })
+      });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   const loaded = () => {
-    return (<>
-      <section className="trendw-list">
-        {book?.map((trendb) => {
-          return (
-            <div className='card' key={trendb._id}>
-              <div className='trendContainer'>
-                <img className='pic' src={trendb.image}width={250} />
-                <h1>Title: {trendb.name}</h1>
-                <h3>Author: {trendb.author}</h3>
-                <h3>Description: {trendb.description}</h3>
-                <Link key={trendb._id} to={`/book/${trendb._id}`}>Edit</Link>
+    return (
+      <>
+        <section className="trendw-list">
+          {book?.map((trendb) => {
+            return (
+              <div className="card" key={trendb._id}>
+                <div className="trendContainer">
+                  <img
+                    className="pic"
+                    src={trendb.image}
+                    alt={trendb.name}
+                    width={250}
+                  />
+                  <h1>{trendb.name}</h1>
+                  <h3>Author: {trendb.author}</h3>
+                  <h3>Description: {trendb.description}</h3>
+                  <Link key={trendb._id} to={`/book/${trendb._id}`}>
+                    Edit
+                  </Link>
+                </div>
+
               </div>
-              
-            </div>
-            
-          )
-        })
-        }
-      </section>
-    </>
-    )
+            );
+          })}
+        </section>
+      </>
+    );
   };
 
   const loading = () => (
@@ -93,15 +98,17 @@ const Book = (props) => {
     </section>
   );
 
-  useEffect(() => { getBook() }, [])
-  console.log(`there is ${book.length} books available to render`)
+  useEffect(() => {
+    getBook();
+  }, []);
+  
   return (
     <section className="new-list">
       <h2>New Book-toc</h2>
       <p>See what book everyone is raving about on tiktok</p>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor='image'>
+          <label htmlFor="image">
             Image
             <input
               type="text"
@@ -127,7 +134,7 @@ const Book = (props) => {
           </label>
         </div>
         <div>
-          <label htmlFor='author'>
+          <label htmlFor="author">
             Author
             <input
               type="text"
@@ -140,7 +147,7 @@ const Book = (props) => {
           </label>
         </div>
         <div>
-          <label htmlFor='description'>
+          <label htmlFor="description">
             Description
             <input
               type="text"
@@ -154,14 +161,11 @@ const Book = (props) => {
         </div>
 
         <br />
-        <input
-          type="submit"
-          value="Create a new book" />
-
+        <input type="submit" value="Create a new book" />
       </form>
       {book && book.length ? loaded() : loading()}
     </section>
   );
-}
+};
 
-export default Book
+export default Book;

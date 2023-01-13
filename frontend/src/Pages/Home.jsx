@@ -1,42 +1,50 @@
-import { useEffect, useState } from 'react';
-import {json} from "react-router"
+import { useEffect, useState } from "react";
+import { json } from "react-router";
 
-function Home ( props ) {
-    const [word, setWord] = useState(null)
-    const [fashion, setFashion] = useState(null)
-    const [book, setBook] = useState(null)
-    async function fetchRandomW(){
-        try{
-            const response = await fetch (`https://trending-backend.herokuapp.com/word`)
-            const wordData = await response.json()
-            const randomW = Math.floor(Math.random() * wordData.length)
-            setWord(wordData[randomW])
-    }catch(err){
-        console.log(err)
+function Home(props) {
+  const [word, setWord] = useState(null);
+  const [fashion, setFashion] = useState(null);
+  const [book, setBook] = useState(null);
+  async function fetchRandomW() {
+    try {
+      const response = await fetch(
+        `https://trending-backend.herokuapp.com/word`
+      );
+      const wordData = await response.json();
+      const randomW = Math.floor(Math.random() * wordData.length);
+      setWord(wordData[randomW]);
+    } catch (err) {
+      console.log(err);
     }
-    }
+  }
 
-    async function fetchRandomF(){
-        try{
-            const response = await fetch (`https://trending-backend.herokuapp.com/fashion`)
-            const fashionData = await response.json()
-            const randomF = Math.floor(Math.random() * fashionData.length)
-            setFashion(fashionData[randomF])
-    }catch(err){
-        console.log(err)
-    }
-    }
+  async function fetchRandomF() {
+    try {
+      const response = await fetch(
+        `https://trending-backend.herokuapp.com/fashion`
+      );
+      const fashionData = await response.json();
+      const randomF = Math.floor(Math.random() * fashionData.length);
+      setFashion(fashionData[randomF]);
+    } catch (err) {
+      console.log(err);
 
-    async function fetchRandomB(){
-        try{
-            const response = await fetch (`https://trending-backend.herokuapp.com/book`)
-            const bookData = await response.json()
-            const randomB = Math.floor(Math.random() * bookData.length)
-            setBook(bookData[randomB])
-    }catch(err){
-        console.log(err)
     }
+  }
+
+  async function fetchRandomB() {
+    try {
+      const response = await fetch(
+        `https://trending-backend.herokuapp.com/book`
+      );
+      const bookData = await response.json();
+      const randomB = Math.floor(Math.random() * bookData.length);
+      setBook(bookData[randomB]);
+    } catch (err) {
+      console.log(err);
+
     }
+  }
 
     useEffect(()=>{
         fetchRandomW();
@@ -70,4 +78,4 @@ function Home ( props ) {
         </div>
             ) 
 }
-export default Home
+export default Home;
