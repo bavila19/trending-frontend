@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
-import React from 'react'
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import React from "react";
 
 const Fashion = (props) => {
-
   const [fashion, setFashion] = useState([]);
   const [newFashion, setNewFashion] = useState({
     name: "",
@@ -13,71 +12,65 @@ const Fashion = (props) => {
   const BASE_URL = "https://trending-backend.herokuapp.com/fashion";
   const getFashion = async () => {
     try {
-      const response = await fetch(BASE_URL)
-      const allFashion = await response.json()
-      setFashion(allFashion)
+      const response = await fetch(BASE_URL);
+      const allFashion = await response.json();
+      setFashion(allFashion);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   const handleChange = (e) => {
-    const userInput = { ...newFashion }
-    userInput[e.target.name] = e.target.value
-    console.log(e.target.name)
-    console.log(e.target.value)
-    setNewFashion(userInput)
-  }
+    const userInput = { ...newFashion };
+    userInput[e.target.name] = e.target.value;
+    setNewFashion(userInput);
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const currentState = { ...newFashion }
-    console.log(currentState, "data sent to API")
+    e.preventDefault();
+    const currentState = { ...newFashion };
     try {
       const requestOptions = {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(currentState)
-      }
-      const response = await fetch(BASE_URL, requestOptions)
-      const createdTrendf = await response.json()
-      console.log(createdTrendf)
-      setFashion([...fashion, createdTrendf])
+        body: JSON.stringify(currentState),
+      };
+      const response = await fetch(BASE_URL, requestOptions);
+      const createdTrendf = await response.json();
+      setFashion([...fashion, createdTrendf]);
       setNewFashion({
         name: "",
         image: "",
         description: "",
-      })
-
+      });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   const loaded = () => {
-    return (<>
-      <section className="trendw-list">
-        {fashion?.map((trendf) => {
-          return (
-              <div className='card' key={trendf._id}>
-                <div className='trendContainer'>
-                  <h1>{trendf.name}</h1>
-                <img src={trendf.image} width={550} />
+    return (
+      <>
+        <section className="trendw-list">
+          {fashion?.map((trendf) => {
+            return (
+              <div className="card" key={trendf._id}>
+                <h1>{trendf.name}</h1>
+                <img src={trendf.image} alt={trendf.name} width={550} />
                 <h3>{trendf.description}</h3>
-                <Link key={trendf._id} to={`/fashion/${trendf._id}`}>Edit</Link>
-                </div>
-                
+                <Link key={trendf._id} to={`/fashion/${trendf._id}`}>
+                  Edit
+                </Link>
               </div>
-          )
-        })
-        }
-      </section>
-    </>
-    )
-  }
-  
+            );
+          })}
+        </section>
+      </>
+    );
+  };
+
   const loading = () => (
     <section className="fashion-list">
       <h1>
@@ -86,21 +79,22 @@ const Fashion = (props) => {
           <img
             className="spinner"
             src="https://freesvg.org/img/1544764567.png"
-            />{" "}
+          />{" "}
         </span>
       </h1>
     </section>
   );
-  
-  useEffect(() => { getFashion() }, [])
-  console.log(`there is ${fashion.length} fashion available to render`)
+
+  useEffect(() => {
+    getFashion();
+  }, []);
   return (
     <section className="new-list">
       <h2>New Fashion</h2>
       <p>Remember on Wednesday we wear pink!</p>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor='name'>
+          <label htmlFor="name">
             Name
             <input
               type="text"
@@ -109,11 +103,11 @@ const Fashion = (props) => {
               placeholder="enter a fashion trend name"
               value={newFashion.name}
               onChange={handleChange}
-              />
+            />
           </label>
         </div>
         <div>
-          <label htmlFor='image'>
+          <label htmlFor="image">
             Image
             <input
               type="text"
@@ -122,11 +116,11 @@ const Fashion = (props) => {
               placeholder="enter a fashion trend image"
               value={newFashion.image}
               onChange={handleChange}
-              />
+            />
           </label>
         </div>
         <div>
-          <label htmlFor='description'>
+          <label htmlFor="description">
             Description
             <input
               type="text"
@@ -135,9 +129,8 @@ const Fashion = (props) => {
               placeholder="enter the fashions description"
               value={newFashion.description}
               onChange={handleChange}
-              />
+            />
           </label>
-
         </div>
         <br />
         <input type="submit" value="Create a New Fashion trend" />
@@ -145,6 +138,6 @@ const Fashion = (props) => {
       {fashion && fashion.length ? loaded() : loading()}
     </section>
   );
-}
+};
 
-export default Fashion
+export default Fashion;
