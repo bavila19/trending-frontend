@@ -57,7 +57,6 @@ const Book = (props) => {
 
   const loaded = () => {
     return (<>
-
       <section className="trendw-list">
         {book?.map((trendb) => {
           return (
