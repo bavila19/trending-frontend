@@ -62,10 +62,13 @@ const Fashion = (props) => {
         {fashion?.map((trendf) => {
           return (
               <div className='card' key={trendf._id}>
-                <h1>{trendf.name}</h1>
-                <img src={trendf.image} alt={trendf.name} width={550} />
+                <div className='trendContainer'>
+                  <h1>{trendf.name}</h1>
+                <img src={trendf.image} width={550} />
                 <h3>{trendf.description}</h3>
                 <Link key={trendf._id} to={`/fashion/${trendf._id}`}>Edit</Link>
+                </div>
+                
               </div>
           )
         })
@@ -74,7 +77,7 @@ const Fashion = (props) => {
     </>
     )
   }
-
+  
   const loading = () => (
     <section className="fashion-list">
       <h1>
@@ -83,17 +86,18 @@ const Fashion = (props) => {
           <img
             className="spinner"
             src="https://freesvg.org/img/1544764567.png"
-          />{" "}
+            />{" "}
         </span>
       </h1>
     </section>
   );
-
+  
   useEffect(() => { getFashion() }, [])
   console.log(`there is ${fashion.length} fashion available to render`)
   return (
-    <section className="fashion-list">
+    <section className="new-list">
       <h2>New Fashion</h2>
+      <p>Remember on Wednesday we wear pink!</p>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor='name'>
@@ -105,7 +109,7 @@ const Fashion = (props) => {
               placeholder="enter a fashion trend name"
               value={newFashion.name}
               onChange={handleChange}
-            />
+              />
           </label>
         </div>
         <div>
@@ -118,7 +122,7 @@ const Fashion = (props) => {
               placeholder="enter a fashion trend image"
               value={newFashion.image}
               onChange={handleChange}
-            />
+              />
           </label>
         </div>
         <div>
@@ -131,12 +135,12 @@ const Fashion = (props) => {
               placeholder="enter the fashions description"
               value={newFashion.description}
               onChange={handleChange}
-            />
+              />
           </label>
 
         </div>
         <br />
-        <input type="submit" value="Create a new Word" />
+        <input type="submit" value="Create a New Fashion trend" />
       </form>
       {fashion && fashion.length ? loaded() : loading()}
     </section>

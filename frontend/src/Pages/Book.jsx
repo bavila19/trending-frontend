@@ -63,9 +63,9 @@ const Book = (props) => {
         {book?.map((trendb) => {
           return (
             <div className='card' key={trendb._id}>
-              <div className='bookContainer'>
-                <img className='pic' src={trendb.image} alt={trendb.name} width={250} />
-                <h1>{trendb.name}</h1>
+              <div className='trendContainer'>
+                <img className='pic' src={trendb.image}width={250} />
+                <h1>Title: {trendb.name}</h1>
                 <h3>Author: {trendb.author}</h3>
                 <h3>Description: {trendb.description}</h3>
                 <Link key={trendb._id} to={`/book/${trendb._id}`}>Edit</Link>
@@ -99,7 +99,8 @@ const Book = (props) => {
   console.log(`there is ${book.length} books available to render`)
   return (
     <section className="new-list">
-      <h2>New Book</h2>
+      <h2>New Book-toc</h2>
+      <p>See what book everyone is raving about on tiktok</p>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor='image'>
