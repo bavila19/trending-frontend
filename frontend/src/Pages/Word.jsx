@@ -133,7 +133,6 @@ const Word = (props) => {
         <input type="submit" value="Create a new Word" />
       </form>
       </div>
-      
       {word && word.length ? loaded() : loading()}
     </section>
   );

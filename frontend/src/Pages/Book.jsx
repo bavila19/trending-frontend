@@ -100,6 +100,7 @@ const Book = (props) => {
   useEffect(() => {
     getBook();
   }, []);
+  
   return (
     <section className="new-list">
       <h2>New Book</h2>
