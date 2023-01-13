@@ -76,11 +76,12 @@ a {
   padding-bottom: 20px;
  
 }
-.bookContainer{
+.trendContainer{
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .new-list{
@@ -102,5 +103,7 @@ a {
   background-position-y: -20px;
   height: 80px;
   border-radius: 15px;
+  font-size: 30px;
+  padding-bottom: 10px;
 }
 

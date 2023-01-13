@@ -65,7 +65,7 @@ function WordShowPage(props) {
                 <div className="word">
                     <h1>Word Show Page</h1>
                     <h2>{trendw.name}</h2>
-                    <img src={trendw.image} alt={trendw.name + " image"} />
+                    <img src={trendw.image} />
                     <h3>{trendw.description}</h3>
                     <div>
                         <button className="delete" onClick={removeTrendw}>Remove Word</button>

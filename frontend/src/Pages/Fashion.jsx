@@ -62,10 +62,13 @@ const Fashion = (props) => {
         {fashion?.map((trendf) => {
           return (
               <div className='card' key={trendf._id}>
-                <h1>{trendf.name}</h1>
-                <img src={trendf.image} alt={trendf.name} width={550} />
+                <div className='trendContainer'>
+                  <h1>{trendf.name}</h1>
+                <img src={trendf.image} width={550} />
                 <h3>{trendf.description}</h3>
                 <Link key={trendf._id} to={`/fashion/${trendf._id}`}>Edit</Link>
+                </div>
+                
               </div>
           )
         })
@@ -94,6 +97,7 @@ const Fashion = (props) => {
   return (
     <section className="new-list">
       <h2>New Fashion</h2>
+      <p>Remember on Wednesday we wear pink!</p>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor='name'>
@@ -136,7 +140,7 @@ const Fashion = (props) => {
 
         </div>
         <br />
-        <input type="submit" value="Create a new Word" />
+        <input type="submit" value="Create a New Fashion trend" />
       </form>
       {fashion && fashion.length ? loaded() : loading()}
     </section>

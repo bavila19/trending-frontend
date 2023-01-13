@@ -65,7 +65,7 @@ function FashionShow(props) {
                 <div className="fashion">
                     <h1>Fashion Show Page</h1>
                     <h2>{trendf.name}</h2>
-                    <img src={trendf.image} alt={trendf.name + " image"} />
+                    <img src={trendf.image} />
                     <h3>{trendf.description}</h3>
                     <div>
                         <button className="delete" onClick={removeTrendf}>Remove Fashion</button>

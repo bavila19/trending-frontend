@@ -12,11 +12,11 @@ const Header = (props) => {
             <Link to="/">Home</Link>
             <br/>
             <br></br>
-            <Link to="/word">Word</Link>
+            <Link to="/word">Dank Slang</Link>
             <br></br>
-            <Link to="/fashion">Fashion</Link>
+            <Link to="/fashion">Thats So Fetch</Link>
             <br></br>
-            <Link to="/book">Book</Link>
+            <Link to="/book">Book-Toc</Link>
             </div>
             
             </div>

@@ -64,7 +64,7 @@ function BookShow(props) {
             <section>
                 <div className="book">
                     <h1>Book Show Page</h1>
-                    <img src={trendb.image} alt={trendb.name + " image"} />
+                    <img src={trendb.image} />
                     <h2>{trendb.name}</h2>
                     <h3>{trendb.author}</h3>
                     <h3>{trendb.description}</h3>
