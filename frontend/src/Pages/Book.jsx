@@ -61,7 +61,7 @@ const Book = (props) => {
           {book?.map((trendb) => {
             return (
               <div className="card" key={trendb._id}>
-                <div className="bookContainer">
+                <div className="trendContainer">
                   <img
                     className="pic"
                     src={trendb.image}
