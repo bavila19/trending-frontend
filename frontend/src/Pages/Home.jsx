@@ -28,6 +28,7 @@ function Home(props) {
       setFashion(fashionData[randomF]);
     } catch (err) {
       console.log(err);
+
     }
   }
 
@@ -41,6 +42,7 @@ function Home(props) {
       setBook(bookData[randomB]);
     } catch (err) {
       console.log(err);
+
     }
   }
 
