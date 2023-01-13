@@ -57,10 +57,12 @@ const Word = (props) => {
         {word?.map((trendw) => {
           return (
               <div className='card' key={trendw._id}>
-                <h1>{trendw.name}</h1>
-                <img className='pic' src={trendw.image} alt={trendw.name}  width={550} />
+                <div className='trendContainer'>
+                  <h1>{trendw.name}</h1>
+                <img className='pic' src={trendw.image}  width={550} />
                 <h3>{trendw.description}</h3>
                 <Link key={trendw._id} to={`/word/${trendw._id}`}>Edit</Link>
+                </div>
               </div>
           )
         })
@@ -88,7 +90,8 @@ const Word = (props) => {
   return (
     <section className="word-list">
       <div className='new-list'>
-      <h2>New Word</h2>
+      <h2>New Slang</h2>
+      <p>Avoid feeling old and be woke with todays generation!</p>
         <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor='name'>

@@ -54,10 +54,12 @@ function BookShow(props) {
       console.log(err);
       navigate(URL);
     }
+
   };
   useEffect(() => {
     getTrendb();
   }, []);
+
 
   const loaded = () => (
     <>

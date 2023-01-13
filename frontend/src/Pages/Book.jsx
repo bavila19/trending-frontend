@@ -75,6 +75,7 @@ const Book = (props) => {
                     Edit
                   </Link>
                 </div>
+
               </div>
             );
           })}
@@ -103,7 +104,8 @@ const Book = (props) => {
   
   return (
     <section className="new-list">
-      <h2>New Book</h2>
+      <h2>New Book-toc</h2>
+      <p>See what book everyone is raving about on tiktok</p>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="image">

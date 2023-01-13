@@ -91,6 +91,7 @@ const Fashion = (props) => {
   return (
     <section className="new-list">
       <h2>New Fashion</h2>
+      <p>Remember on Wednesday we wear pink!</p>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">
@@ -132,7 +133,7 @@ const Fashion = (props) => {
           </label>
         </div>
         <br />
-        <input type="submit" value="Create a new Word" />
+        <input type="submit" value="Create a New Fashion trend" />
       </form>
       {fashion && fashion.length ? loaded() : loading()}
     </section>

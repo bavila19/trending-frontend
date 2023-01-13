@@ -110,6 +110,7 @@ function FashionShow(props) {
     </>
   );
   return <div>{trendf ? loaded() : loading()}</div>;
+
 }
 
 export default FashionShow;

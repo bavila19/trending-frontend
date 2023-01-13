@@ -44,6 +44,7 @@ function Home(props) {
     }
   }
 
+
   useEffect(() => {
     fetchRandomW();
     fetchRandomF();
