@@ -47,25 +47,26 @@ function Home ( props ) {
         fetchRandomB();
     },[])
       return (
-        <div>
+        <div className="trendw-list">
+            <h1>Random Trends of the day</h1>
             { word ? <>
                 <div className='card'>
                   <h1>{word.name}</h1>
-                  <img className='pic' src={word.image} alt={word.name} width={550} />
+                  <img className='pic' src={word.image} width={550} />
                   <h3>{word.description}</h3>
                 </div>
             </> : null }
         { fashion ? <>
             <div className='card'>
               <h1>{fashion.name}</h1>
-              <img className='pic' src={fashion.image} alt={fashion.name} width={550} />
+              <img className='pic' src={fashion.image} width={550} />
               <h3>{fashion.description}</h3>
             </div>
         </> : null }
          { book ? <>
                 <div className='card'>
                   <h1>{book.name}</h1>
-                  <img className='pic' src={book.image} alt={book.name} width={250} />
+                  <img className='pic' src={book.image} width={250} />
                   <h3>{book.description}</h3>
                 </div>
             </> : null }
