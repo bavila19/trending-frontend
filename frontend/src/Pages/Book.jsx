@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+<input type="submit" value="Create a new book" />
+
 const Book = (props) => {
   const [book, setBook] = useState([]);
   const [newBook, setNewBook] = useState({
@@ -97,7 +99,7 @@ const Book = (props) => {
       </h1>
     </section>
   );
-
+ 
   useEffect(() => {
     getBook();
   }, []);

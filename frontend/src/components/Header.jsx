@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import DropDownMenu from "./DropDownMenu";
 const Header = (props) => {
 
   return (
@@ -17,6 +18,7 @@ const Header = (props) => {
         <Link to="/fashion">That's so fetch</Link>
         <br></br>
         <Link to="/book">Book-Toc</Link>
+        <DropDownMenu />
       </div>
     </div>
   );

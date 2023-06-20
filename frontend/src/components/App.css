@@ -107,3 +107,13 @@ a {
   padding-bottom: 10px;
 }
 
+.dropDownMenu{
+  position: absolute;
+  top: 4.5rem;
+  right: 4rem;
+  width: 120px;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: white;
+  border: 1px solid gray;
+}
