@@ -6,9 +6,6 @@ import Book from "../Pages/Book";
 import BookShow from "../Pages/BookShow";
 import Fashion from "../Pages/Fashion";
 import FashionShowPage from "../Pages/FashionShowPage";
-import CreateSlang from "../Pages/CreateSlang";
-import CreateFashion from "../Pages/CreateFashion";
-import CreateBook from "../Pages/CreateBook";
 
 const Main = (props) => {
   return (
@@ -21,9 +18,6 @@ const Main = (props) => {
         <Route path="/book/:id" element={<BookShow />} />
         <Route path="/fashion" element={<Fashion />} />
         <Route path="/fashion/:id" element={<FashionShowPage />} />
-        <Route path="/CreateSlang" element={<CreateSlang />} />
-        <Route path="/CreateFashion" element={<CreateFashion />} />
-        <Route path="/CreateBook" element={<CreateBook />} />
       </Routes>
     </main>
   );
