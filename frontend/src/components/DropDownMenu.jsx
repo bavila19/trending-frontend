@@ -5,9 +5,9 @@ const DropDownMenu = () => {
     return (
         <div className='flex flex-col dropDownMenu'>
             <ul className='flex flex-col gap-4'>
-                <li>Slang</li>
-                <li>Fashion</li>
-                <li>Books</li>
+                <li><Link to="/CreateSlang">Slang</Link></li>
+                <li><Link to="/CreateFashion">Fashion</Link></li>
+                <li><Link to="/CreateBook">Books</Link></li>
             </ul>
 
         </div>
