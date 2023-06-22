@@ -107,6 +107,11 @@ a {
   padding-bottom: 10px;
 }
 
+ul {
+  list-style-type: none;
+  margin-left: -25px;
+}
+
 .dropDownMenu{
   position: absolute;
   top: 12.5rem;
