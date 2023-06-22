@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState } from 'react'
+import DropDownMenu from "./DropDownMenu";
+
 const Header = (props) => {
   return (
     <div>
@@ -20,6 +22,7 @@ const Header = (props) => {
         <br></br>
         <Link to="/book">Post</Link>
       </div>
+        {<DropDownMenu />}
     </div>
   );
 };

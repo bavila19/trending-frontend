@@ -106,3 +106,27 @@ a {
   font-size: 30px;
   padding-bottom: 10px;
 }
+
+.dropDownMenu{
+  position: absolute;
+  top: 12.5rem;
+  right: 2.5rem;
+  width: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: white;
+  border: 1px solid gray;
+}
+
+.dropDownMenu::before{
+  content: '';
+  position: absolute;
+  top: -0.7rem;
+  right: 1.1rem;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  background-color: white;
+  border-left: 1px solid gray;
+  border-top: 1px solid gray;
+}
