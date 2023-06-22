@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import DropDownMenu from "./DropDownMenu";
 
 const Header = (props) => {
+
+  const [openMenu, setOpenMenu] = useState(false);
+
   return (
     <div>
       <div className="centering">
@@ -20,9 +23,11 @@ const Header = (props) => {
         <br></br>
         <Link to="/book">Book-Toc</Link>
         <br></br>
-        <Link to="/book">Post</Link>
+        <Link onClick={() => setOpenMenu((prev => !prev))}>Post</Link>
       </div>
-        {<DropDownMenu />}
+      {
+      openMenu && <DropDownMenu />
+      }
     </div>
   );
 };
